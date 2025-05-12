@@ -15,7 +15,7 @@ def migrate(env, version):
         f"{openupgrade.get_legacy_name('password_upper')}, "
         f"{openupgrade.get_legacy_name('password_numeric')}, "
         f"{openupgrade.get_legacy_name('password_special')} "
-        "FROM res_company WHERE active is true ORDER BY id LIMIT 1"
+        "FROM res_company ORDER BY id LIMIT 1"
     )
     res = env.cr.fetchone()
     env["ir.config_parameter"].set_param("password_security.expiration_days", res[0])
